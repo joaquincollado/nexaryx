@@ -1,28 +1,60 @@
 @import "tailwindcss";
+@import "../docs/design/tokens.css";
 
-:root {
-  --background: #f2f2f2;
-  --foreground: #1d1d1d;
-  --border: #444;
-  --max-width: 900px;
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-void: var(--void);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-signal: var(--signal);
+  --color-on-signal: var(--on-signal);
+  --color-glitch: var(--glitch);
+  --color-warn: var(--warn);
 
-  --font-sans: "Verdana", "Tahoma", sans-serif;
-  --font-mono: "Courier New", monospace;
+  --text-display-xl: 80px;
+  --text-display-xl--line-height: 76px;
+  --text-display-xl--font-weight: 400;
+  --text-display-md: 48px;
+  --text-display-md--line-height: 48px;
+  --text-display-md--font-weight: 400;
+  --text-title: 20px;
+  --text-title--line-height: 28px;
+  --text-title--font-weight: 600;
+  --text-body: 14px;
+  --text-body--line-height: 22px;
+  --text-body--font-weight: 400;
+  --text-small: 12px;
+  --text-small--line-height: 18px;
+  --text-small--font-weight: 400;
+  --text-label: 11px;
+  --text-label--line-height: 16px;
+  --text-label--letter-spacing: 0.14em;
+  --text-label--font-weight: 500;
+
+  --radius-sm: 2px;
+  --radius-dot: 50%;
+
+  --shadow-glow-signal: var(--glow-signal);
+  --shadow-glow-glitch: var(--glow-glitch);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #e4e4e4;
-    --border: #666;
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--line);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  margin: 0;
-  padding: 0;
-  line-height: 1.55;
+  ::selection {
+    background: var(--signal);
+    color: var(--on-signal);
+  }
 }
