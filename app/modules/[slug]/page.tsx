@@ -7,11 +7,11 @@ const KNOWN_MODULES = [
 ];
 
 type ModulePageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export default function ModuleDetailPage({ params }: ModulePageProps) {
-  const { slug } = params;
+export default async function ModuleDetailPage({ params }: ModulePageProps) {
+  const { slug } = await params;
 
   if (!KNOWN_MODULES.includes(slug)) {
     notFound();
